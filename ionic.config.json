@@ -1,0 +1,7 @@
+{
+  "name": "engineering-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
