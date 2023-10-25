@@ -12,7 +12,7 @@ This is an Ionic application with an "email" and "password" login:
 - Use rxjs operators
 
 Steps to run
-1. Clone project: 'git clone https://github.com/rortizv/engineering-front.git'
+1. Clone project: ```git clone https://github.com/rortizv/engineering-front.git```
 2. Use Node 18.18.2
-3. Install dependencies: 'npm i'
-4. Run app: 'ionic serve'
+3. Install dependencies: ```npm i```
+4. Run app: ```ionic serve```
