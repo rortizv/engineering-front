@@ -103,8 +103,11 @@ export class UserDetailPage implements OnInit {
     this.dismiss();
   }
 
-  dismiss(data = null) {
-    this.modalController.dismiss(data);
+  async dismiss(data = null) {
+    const topModal = await this.modalController.getTop();
+    if (topModal) {
+      this.modalController.dismiss(data);
+    }
   }
 
 }

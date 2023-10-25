@@ -10,6 +10,7 @@ export class AuthService {
   private API_URL = environment.API_URL_CORE;
   private TOKEN_KEY = 'authToken';
   public isLoggedIn = new BehaviorSubject<boolean>(false);
+  public userLogged: any;
 
   constructor(private http: HttpClient) { }
 

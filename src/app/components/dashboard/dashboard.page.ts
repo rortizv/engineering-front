@@ -27,7 +27,7 @@ export class DashboardPage implements OnInit {
   logout() {
     localStorage.removeItem('authToken');
     this.toastController.create({
-      message: `User logged out successfully`,
+      message: 'User has logged out',
       duration: 3000,
       position: 'bottom',
       color: 'success'
@@ -115,6 +115,7 @@ export class DashboardPage implements OnInit {
             // call service to delete user
             this.userService.deleteUser(user.id).subscribe({
               next: (response: any) => {
+                // if user deleted is the same as the logged in user, log out
                 this.toastController.create({
                   message: `User ${user.email} deleted permanently`,
                   duration: 3000,
@@ -123,6 +124,10 @@ export class DashboardPage implements OnInit {
                 }).then(toast => {
                   toast.present();
                 });
+                if (user.email === this.authService.userLogged) {
+                  this.logout();
+                  return;
+                }
                 console.log('User deleted successfully', response);
                 this.getUsers();
               },

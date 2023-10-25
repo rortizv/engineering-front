@@ -1,12 +1,13 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import localeEsCO from '@angular/common/locales/es-CO';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-
+registerLocaleData(localeEsCO, 'es-CO');
 
 @NgModule({
   declarations: [],
@@ -21,7 +22,7 @@ import { IonicModule } from '@ionic/angular';
     ReactiveFormsModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'en-US' }
+    { provide: LOCALE_ID, useValue: 'es-CO' }
   ]
 })
 export class SharedModule { }
