@@ -1,0 +1,51 @@
+ion-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-item ion-label {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+ion-item ion-toggle {
+  --padding-start: 0;
+  --padding-end: 0;
+  --margin-start: auto;
+  --margin-end: auto;
+  --min-width: auto;
+}
+
+.table-header ion-col {
+  text-align: center;
+  font-weight: 700;
+  margin: 2rem 1rem 1rem 1rem;
+}
+
+.toggle-state {
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  max-width: 5rem;
+}
+
+.actions-col {
+  text-align: center;
+  margin-top: -0.8rem;
+
+  .action-button {
+    height: 1rem;
+  }
+}
+
+.flexEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user {
+  border-bottom: 1px solid #d3d3d3;
+  margin-top: 0.5rem;
+}

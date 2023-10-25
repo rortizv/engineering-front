@@ -236,9 +236,32 @@
 }
 
 html {
-  /* 
+  /*
    * For more information on dynamic font scaling, visit the documentation:
    * https://ionicframework.com/docs/layout/dynamic-font-scaling
    */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
+}
+
+.toast-failed {
+  --background: #f56767;
+  --color: #fff;
+}
+
+.toast-success {
+  --background: #2ecc71;
+  --color: #fff;
+}
+
+.toast-warning {
+  --background: #dd9323;
+  --color: #fff;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+.justifyCenter {
+  justify-content: center;
 }
