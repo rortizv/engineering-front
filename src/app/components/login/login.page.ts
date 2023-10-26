@@ -40,7 +40,7 @@ export class LoginPage implements OnInit {
 
     this.authService.login(username, password).subscribe({
       next: (response) => {
-        this.authService.userLogged = response.user.email;
+        this.authService.userLogged = response.loggedUser.email;
         this.toastController.create({
           message: `User logged in successfully`,
           duration: 3000,
