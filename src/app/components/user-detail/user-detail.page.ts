@@ -54,28 +54,32 @@ export class UserDetailPage implements OnInit {
     if (this.userForm.valid) {
       const userData = this.userForm.value;
       if (!this.isEditing) {
-        // call create user service
         await this.userService.createUser(userData).subscribe({
           next: (response: any) => {
             this.toastController.create({
               message: `User created successfully`,
               duration: 3000,
               position: 'bottom',
-              color: 'success'
-            }).then(toast => {
+              color: 'success',
+            }).then((toast) => {
               toast.present();
             });
             console.log('User created successfully', response);
-            // Call the callback function to update users list
-            this.navParams.get('onUserCreated')(response.user);
+            this.userService.getUsers().subscribe({
+              next: (response: any) => {
+                const updatedUserList = response.users;
+              },
+              error: (error: any) => {
+                console.error('Error creating user', error);
+              },
+            });
             this.dismiss(response.user);
           },
           error: (error: any) => {
             console.error('Error creating user', error);
-          }
+          },
         });
       } else {
-        // call update user service
         userData.id = this.id;
         await this.userService.updateUser(userData).subscribe({
           next: (response: any) => {
@@ -83,16 +87,26 @@ export class UserDetailPage implements OnInit {
               message: 'User updated successfully',
               duration: 3000,
               position: 'bottom',
-              color: 'success'
-            }).then(toast => {
+              color: 'success',
+            }).then((toast) => {
               toast.present();
             });
             console.log('User updated successfully', response);
+
+            this.userService.getUsers().subscribe({
+              next: (response: any) => {
+                const updatedUserList = response.users;
+                this.userService.setUserList(updatedUserList);
+              },
+              error: (error: any) => {
+                console.error('Error updating user', error);
+              },
+            });
             this.dismiss(response.user);
           },
           error: (error: any) => {
             console.error('Error updating user', error);
-          }
+          },
         });
       }
       this.dismiss(userData);
@@ -109,5 +123,4 @@ export class UserDetailPage implements OnInit {
       this.modalController.dismiss(data);
     }
   }
-
 }

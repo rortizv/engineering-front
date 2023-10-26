@@ -22,6 +22,9 @@ export class DashboardPage implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
+    this.userService.userList$.subscribe(users => {
+      this.users = users;
+    });
   }
 
   logout() {
@@ -45,6 +48,7 @@ export class DashboardPage implements OnInit {
           user.createdAt = new Date(user.createdAt);
         });
         this.users = response.users;
+        this.userService.setUserList(this.users);
       },
       error: (error) => {
         console.log(error);

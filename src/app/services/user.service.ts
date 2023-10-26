@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
   private API_URL = environment.API_URL_CORE;
+  private userListSubject = new BehaviorSubject<any[]>([]);
+  userList$ = this.userListSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -89,6 +91,10 @@ export class UserService {
         },
       });
     });
+  }
+
+  setUserList(users: any[]) {
+    this.userListSubject.next(users);
   }
 
 }
